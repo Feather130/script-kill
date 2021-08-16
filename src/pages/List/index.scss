@@ -1,15 +1,36 @@
-.filter{
-  &-title{
-    color: red;
+.list-warp{
+  background: #141a30;
+  height: 100vh;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  .at-search-bar{
+    background: #141a30;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:after{
+      content: none;
+    }
   }
 
-  &-item{
-    color:blue;
+  &-filter {
+    &-title {
+      color: red;
+    }
 
+    &-item {
+      color: blue;
+    }
 
+    &-item-active {
+      color: #f7c307;
+    }
   }
 
-  &-item-active{
-    color: #f7c307;
+  &-card {
+    margin-bottom: 30px;
   }
 }
+
+

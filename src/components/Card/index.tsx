@@ -4,7 +4,7 @@ import { ImageProps } from "@tarojs/components/types/Image";
 import "./index.scss";
 
 interface CardProps {
-  id: string;
+  id: number;
   imageUrl: string;
   title: string;
   grade?: string;
@@ -32,41 +32,44 @@ const Card: React.FC<CardProps> = ({
   difficulty,
 }) => {
   return (
-    <View className="card">
-      <View className="card-img">
+    <View className='card'>
+      <View className='card-img'>
         <Image
           style={{ width: "100%", height: "100%", borderRadius: "8px" }}
           src={imageUrl}
         />
       </View>
-      <View className="card-content">
-        <View className="card-content-top">
-          <View className="card-content-title-group">
-            <Text className="card-content-title">{title}</Text>
-            {grade ? <Text>分数</Text> : null}
-            {trait ? <Text>特点</Text> : null}
-            {isHot ? <Text>hot</Text> : null}
-            {isNew ? <Text>新本</Text> : null}
+      <View className='card-content'>
+        <View className='card-content-top'>
+          <View className='card-content-title-group'>
+            <Text className='card-content-title'>{title}</Text>
+            {grade ? <Text className='card-content-grade'>（{grade}分）</Text> : null}
+            {trait ? <Text className='card-content-trait'>{trait}</Text> : null}
+            {isHot ? <Text className='iconfont icon-rehot card-content-isHot' /> : null}
+            {isNew ? <Text className='iconfont icon-xin card-content-xin' /> : null}
           </View>
-          <View className="card-content-tags">
-            {tags.map((tag, index) => (
-              <Text key={index}>{tag}</Text>
+          <View className='card-content-tags'>
+            {tags.map((tag, index,array) => (
+              <Text key={index} className='card-content-tag'>
+                {tag}
+                {index!==array.length?'；':''}
+              </Text>
             ))}
           </View>
-          <View className="card-content-describe">{describe}</View>
+          <View className='card-content-describe'>{describe}</View>
         </View>
-        <View className="card-content-bottom">
-          <View>
-            <Text>图标</Text>
-            <Text>{people}</Text>
+        <View className='card-content-bottom'>
+          <View className='card-content-bottom-view'>
+            <Text className='iconfont icon-renshu card-content-bottom-icon' />
+            <Text className='card-content-bottom-text'>{people}</Text>
+          </View>
+          <View className='card-content-bottom-view'>
+            <Text className='iconfont icon-shijian card-content-bottom-icon' />
+            <Text className='card-content-bottom-text'>{time}</Text>
           </View>
           <View>
-            <Text>图标</Text>
-            <Text>{time}</Text>
-          </View>
-          <View>
-            <Text>图标</Text>
-            <Text>{difficulty}</Text>
+            <Text className='iconfont icon-biaoqian card-content-bottom-icon' />
+            <Text className='card-content-bottom-text'>{difficulty}</Text>
           </View>
         </View>
       </View>

@@ -139,18 +139,32 @@ const filterOptions = {
 
 const data = [
   {
-    id:'',
+    id:1,
     imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
     title: "天地学园",
     isHot: true,
     isNew: true,
-    grade: "",
-    trait: "",
-    tags: [],
-    describe: "",
-    people: "",
-    time: "",
-    difficulty: "",
+    grade: "9.46",
+    trait: "硬核必玩！",
+    tags: ['推理','硬核','还原'],
+    describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
+    people: "4男2女",
+    time: "6小时",
+    difficulty: "适中",
+  },
+  {
+    id:2,
+    imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
+    title: "天地学园",
+    isHot: true,
+    isNew: true,
+    grade: "9.46",
+    trait: "硬核必玩！",
+    tags: ['推理','硬核','还原'],
+    describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
+    people: "4男2女",
+    time: "6小时",
+    difficulty: "适中",
   },
 ];
 
@@ -181,8 +195,8 @@ const List: React.FC<{}> = () => {
         key={item.value}
         data-value={item.value}
         className={classNames(
-          "filter-item",
-          active[key] === item.value ? "filter-item-active" : ""
+          "list-warp-filter-item",
+          active[key] === item.value ? "list-warp-filter-item-active" : ""
         )}
       >
         {item.lable}
@@ -193,12 +207,12 @@ const List: React.FC<{}> = () => {
   const filter = (options: object): ReactNode => {
     return Object.keys(options).map((option) => (
       <View key={option} onClick={(e) => handleFilter(e, option)}>
-        <Text className="filter-title">{options[option].title}:</Text>
+        <Text className="list-warp-filter-title">{options[option].title}:</Text>
         <Text
           data-value="all"
           className={classNames(
-            "filter-item",
-            active[option] === "all" ? "filter-item-active" : ""
+            "list-warp-filter-item",
+            active[option] === "all" ? "list-warp-filter-item-active" : ""
           )}
         >
           全部
@@ -217,7 +231,7 @@ const List: React.FC<{}> = () => {
   }, []);
 
   return (
-    <View className="List">
+    <View className="list-warp">
       <AtSearchBar
         placeholder="剧本名"
         value={searchValue}
@@ -229,8 +243,9 @@ const List: React.FC<{}> = () => {
       <AtDivider />
       {
         data.map(item=>(
-
-          <Card key={item.id} {...item}  />
+          <View className="list-warp-card" key={item.id}>
+            <Card  {...item}  />
+          </View>
         ))
       }
     </View>

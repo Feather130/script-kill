@@ -2,22 +2,92 @@
   display: flex;
 
   &-img{
-    width: 160px;
-    height: 210px;
-    margin-right: 2t0px;
+    width: 146px;
+    height: 220px;
+    margin-right: 20px;
   }
 
   &-content{
     display: flex;
+    flex: 1;
     justify-content: space-between;
     flex-direction: column;
-    
-    &-title{
 
+    &-title-group{
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 10px;
     }
 
-    &-describe{
-      
+    &-title{
+      font-size: 36px;
+      color: #ffffff;
+    }
+
+    &-grade{
+      font-size: 24px;
+      color: #acaec5;
+    }
+
+    &-trait{
+      color: #e0698f;
+      border: 4px solid #e0698f;
+      border-radius: 8px;
+      padding: 6px;
+      font-size: 24px;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    &-isHot,&-xin{
+      font-size: 44px;
+    }
+
+    &-isHot{
+      color: #da5333;
+      margin-right: 6px;
+    }
+
+    &-xin{
+      color: #686e84;
+    }
+
+    &-tags,&-describe{
+      color: #797a96;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    &-tags{
+      margin-bottom: 10px;
+    }
+
+    &-bottom{
+      display: flex;
+      color: #797a96;
+      font-size: 24px;
+
+      &-view{
+        position: relative;
+        margin-right: 60px;
+
+        &::after{
+          content: '';
+          position: absolute;
+          display: inline-block;
+          height: 70%;
+          top: 20%;
+          right: -25%;
+          width: 2px;
+          background: #797a96;
+        }
+      }
+
+      &-icon{
+        font-size: 24px;
+        margin-right: 10px;
+        vertical-align: middle;
+      }
     }
   }
 }
