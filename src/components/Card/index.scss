@@ -1,0 +1,23 @@
+.card{
+  display: flex;
+
+  &-img{
+    width: 160px;
+    height: 210px;
+    margin-right: 2t0px;
+  }
+
+  &-content{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    &-title{
+
+    }
+
+    &-describe{
+      
+    }
+  }
+}

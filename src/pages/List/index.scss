@@ -1,0 +1,15 @@
+.filter{
+  &-title{
+    color: red;
+  }
+
+  &-item{
+    color:blue;
+
+
+  }
+
+  &-item-active{
+    color: #f7c307;
+  }
+}
