@@ -1,26 +1,39 @@
-.list-warp{
+.list-warp {
   background: #141a30;
   height: 100vh;
   padding-left: 30px;
   padding-right: 30px;
 
-  .at-search-bar{
+  .at-divider {
+    height: 60px;
+  }
+
+  .at-search-bar {
     background: #141a30;
     padding-left: 0;
     padding-right: 0;
+    margin-bottom: 20px;
 
-    &:after{
+    &:after {
       content: none;
     }
   }
 
   &-filter {
+    margin-bottom: 20px;
+    font-size: 28px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
     &-title {
-      color: red;
+      color: #ffffff;
     }
 
     &-item {
-      color: blue;
+      color: #ffffff;
+      margin-right: 30px;
     }
 
     &-item-active {
@@ -29,8 +42,7 @@
   }
 
   &-card {
+    margin-top: 20px;
     margin-bottom: 30px;
   }
 }
-
-

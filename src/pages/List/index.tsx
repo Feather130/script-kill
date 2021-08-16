@@ -139,32 +139,38 @@ const filterOptions = {
 
 const data = [
   {
-    id:1,
+    id: 1,
     imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
+    imageTag: "城限",
     title: "天地学园",
     isHot: true,
     isNew: true,
     grade: "9.46",
     trait: "硬核必玩！",
-    tags: ['推理','硬核','还原'],
+    tags: ["推理", "硬核", "还原"],
     describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
     people: "4男2女",
     time: "6小时",
     difficulty: "适中",
+    recommend: true,
+    hasVideo: false,
   },
   {
-    id:2,
+    id: 2,
     imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
+    imageTag: "盒装",
     title: "天地学园",
     isHot: true,
     isNew: true,
     grade: "9.46",
     trait: "硬核必玩！",
-    tags: ['推理','硬核','还原'],
+    tags: ["推理", "硬核", "还原"],
     describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
     people: "4男2女",
     time: "6小时",
     difficulty: "适中",
+    recommend: false,
+    hasVideo: true,
   },
 ];
 
@@ -206,8 +212,14 @@ const List: React.FC<{}> = () => {
 
   const filter = (options: object): ReactNode => {
     return Object.keys(options).map((option) => (
-      <View key={option} onClick={(e) => handleFilter(e, option)}>
-        <Text className="list-warp-filter-title">{options[option].title}:</Text>
+      <View
+        key={option}
+        onClick={(e) => handleFilter(e, option)}
+        className="list-warp-filter"
+      >
+        <Text className="list-warp-filter-title">
+          {options[option].title}：
+        </Text>
         <Text
           data-value="all"
           className={classNames(
@@ -241,13 +253,11 @@ const List: React.FC<{}> = () => {
       />
       <View>{filter(filterOptions)}</View>
       <AtDivider />
-      {
-        data.map(item=>(
-          <View className="list-warp-card" key={item.id}>
-            <Card  {...item}  />
-          </View>
-        ))
-      }
+      {data.map((item) => (
+        <View className="list-warp-card" key={item.id}>
+          <Card {...item} />
+        </View>
+      ))}
     </View>
   );
 };

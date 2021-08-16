@@ -32,7 +32,9 @@ export default {
         selectedIconPath:'assets/tabbar/zone_select.png',
       }
     ],
-    selectedColor:'#f7c307'
+    color:'',
+    selectedColor:'#f7c307',
+    backgroundColor:'#141a30'
   },
   window: {
     backgroundTextStyle: 'light',
