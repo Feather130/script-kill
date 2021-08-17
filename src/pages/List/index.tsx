@@ -1,6 +1,7 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import classNames from "classnames";
 import { View, Text } from "@tarojs/components";
+import Taro from '@tarojs/taro'
 import { AtSearchBar, AtDivider } from "taro-ui";
 import Card from "../../components/Card/index";
 import "./index.scss";
@@ -10,27 +11,27 @@ const filterOptions = {
     title: "人数",
     list: [
       {
-        lable: "≤4人",
+        label: "≤4人",
         value: 4,
       },
       {
-        lable: "5人",
+        label: "5人",
         value: 5,
       },
       {
-        lable: "6人",
+        label: "6人",
         value: 6,
       },
       {
-        lable: "7人",
+        label: "7人",
         value: 7,
       },
       {
-        lable: "8人",
+        label: "8人",
         value: 8,
       },
       {
-        lable: "≥9人",
+        label: "≥9人",
         value: 9,
       },
     ],
@@ -39,23 +40,23 @@ const filterOptions = {
     title: "时长",
     list: [
       {
-        lable: "入门",
+        label: "入门",
         value: 0,
       },
       {
-        lable: "进阶",
+        label: "进阶",
         value: 1,
       },
       {
-        lable: "适中",
+        label: "适中",
         value: 2,
       },
       {
-        lable: "烧脑",
+        label: "烧脑",
         value: 3,
       },
       {
-        lable: "撕本",
+        label: "撕本",
         value: 4,
       },
     ],
@@ -64,23 +65,23 @@ const filterOptions = {
     title: "题材",
     list: [
       {
-        lable: "入门",
+        label: "入门",
         value: 0,
       },
       {
-        lable: "进阶",
+        label: "进阶",
         value: 1,
       },
       {
-        lable: "适中",
+        label: "适中",
         value: 2,
       },
       {
-        lable: "烧脑",
+        label: "烧脑",
         value: 3,
       },
       {
-        lable: "撕本",
+        label: "撕本",
         value: 4,
       },
     ],
@@ -89,23 +90,23 @@ const filterOptions = {
     title: "难度",
     list: [
       {
-        lable: "入门",
+        label: "入门",
         value: 0,
       },
       {
-        lable: "进阶",
+        label: "进阶",
         value: 1,
       },
       {
-        lable: "适中",
+        label: "适中",
         value: 2,
       },
       {
-        lable: "烧脑",
+        label: "烧脑",
         value: 3,
       },
       {
-        lable: "撕本",
+        label: "撕本",
         value: 4,
       },
     ],
@@ -114,23 +115,23 @@ const filterOptions = {
     title: "排序",
     list: [
       {
-        lable: "入门",
+        label: "入门",
         value: 0,
       },
       {
-        lable: "进阶",
+        label: "进阶",
         value: 1,
       },
       {
-        lable: "适中",
+        label: "适中",
         value: 2,
       },
       {
-        lable: "烧脑",
+        label: "烧脑",
         value: 3,
       },
       {
-        lable: "撕本",
+        label: "撕本",
         value: 4,
       },
     ],
@@ -195,17 +196,23 @@ const List: React.FC<{}> = () => {
     // TODO 搜索 并清空filter
   };
 
+  const jumpDetail=(id)=>{
+      Taro.navigateTo({
+        url:`/pages/Detail/index?id=${id}`
+      })
+  }
+
   const filterItem = (key, list: Array<object>): ReactNode => {
-    return list.map((item) => (
+    return list.map(({label, value}) => (
       <Text
-        key={item.value}
-        data-value={item.value}
+        key={value}
+        data-value={value}
         className={classNames(
           "list-warp-filter-item",
-          active[key] === item.value ? "list-warp-filter-item-active" : ""
+          active[key] === value ? "list-warp-filter-item-active" : ""
         )}
       >
-        {item.lable}
+        {label}
       </Text>
     ));
   };
@@ -215,13 +222,13 @@ const List: React.FC<{}> = () => {
       <View
         key={option}
         onClick={(e) => handleFilter(e, option)}
-        className="list-warp-filter"
+        className='list-warp-filter'
       >
-        <Text className="list-warp-filter-title">
+        <Text className='list-warp-filter-title'>
           {options[option].title}：
         </Text>
         <Text
-          data-value="all"
+          data-value='all'
           className={classNames(
             "list-warp-filter-item",
             active[option] === "all" ? "list-warp-filter-item-active" : ""
@@ -243,9 +250,9 @@ const List: React.FC<{}> = () => {
   }, []);
 
   return (
-    <View className="list-warp">
+    <View className='list-warp'>
       <AtSearchBar
-        placeholder="剧本名"
+        placeholder='剧本名'
         value={searchValue}
         onChange={handleChange}
         onActionClick={handleSearch}
@@ -254,8 +261,8 @@ const List: React.FC<{}> = () => {
       <View>{filter(filterOptions)}</View>
       <AtDivider />
       {data.map((item) => (
-        <View className="list-warp-card" key={item.id}>
-          <Card {...item} />
+        <View className='list-warp-card' key={item.id} onClick={()=>jumpDetail(item.id)}>
+          <Card rcType='list' {...item} />
         </View>
       ))}
     </View>

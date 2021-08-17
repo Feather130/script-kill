@@ -4,6 +4,7 @@ export default {
     'pages/List/index',
     'pages/Rank/index',
     'pages/Zone/index',
+    'pages/Detail/index',
   ],
   tabBar: {
     list: [
@@ -32,8 +33,8 @@ export default {
         selectedIconPath:'assets/tabbar/zone_select.png',
       }
     ],
-    color:'',
-    selectedColor:'#f7c307',
+    color:'#8a90a6',
+    selectedColor:'#fac618',
     backgroundColor:'#141a30'
   },
   window: {
