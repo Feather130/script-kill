@@ -1,8 +1,7 @@
 .detail {
   position: relative;
-
-  &-main {
-  }
+  height: 100vh;
+  width: 100vw;
 
   .at-divider {
     height: 60px;
@@ -34,10 +33,11 @@
 
   &-bg {
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
+    background-color: #000000;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -46,7 +46,7 @@
       content: "";
       background-color: rgba(0, 0, 0, 0.65);
       height: 100vh;
-      width: 100vh;
+      width: 100vw;
       position: absolute;
       top: 0;
       left: 0;
@@ -56,15 +56,13 @@
 
   &-content {
     position: absolute;
-    width: 90%;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    height: 100vh;
+    width: 100vw;
 
-    &-main{
-      margin-top: 40px;
+    &-main {
+      margin-left: 40px;
+      margin-right: 40px;
+      margin-top: 30px;
     }
   }
 }

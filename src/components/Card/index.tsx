@@ -110,11 +110,15 @@ const Card: React.FC<CardProps> = ({
               </Text>
             ))}
           </View>
-          {trait ? (
-            <View>
-              <Text className='card-content-trait'>{trait}</Text>
-            </View>
-          ) : null}
+          {rcType === "list" ? null : (
+            <>
+              {trait ? (
+                <View>
+                  <Text className='card-content-trait'>{trait}</Text>
+                </View>
+              ) : null}
+            </>
+          )}
           {rcType === "list" ? (
             <View className='card-content-describe'>{describe}</View>
           ) : null}

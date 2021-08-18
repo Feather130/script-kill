@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Taro from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
 import "./index.scss";
 
@@ -7,11 +8,42 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ title }) => {
-  const { navBarHeight } = window.globalData;
+  const [showReturn, setShowReturn] = useState(false);
+  const { navBarHeight, menuHeight, menuBotton } = window.globalData;
+
+  const handleReturn = () => {
+    Taro.navigateBack();
+  };
+
+  useEffect(() => {
+    const len = Taro.getCurrentPages().length;
+    if (len > 1) {
+      setShowReturn(true);
+    }
+  }, []);
 
   return (
-    <View style={{ height: navBarHeight }}>
-      <Text className=''>{title || "N=1剧本杀演绎俱乐部"}</Text>
+    <View className='navigation' style={{ height: navBarHeight }}>
+      <View
+        className='navigation-content'
+        style={{
+          height: menuHeight,
+          lineHeight: `${menuHeight}px`,
+          bottom: menuBotton,
+        }}
+      >
+        <View className='navigation-content-options'>
+          {showReturn ? (
+            <Text
+              className='iconfont icon-fanhui navigation-content-options-return'
+              onClick={handleReturn}
+            />
+          ) : null}
+        </View>
+        <View className='navigation-content-title'>
+          <Text>{title || "N=1剧本杀演绎俱乐部"}</Text>
+        </View>
+      </View>
     </View>
   );
 };

@@ -1,7 +1,8 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import { View, Text } from "@tarojs/components";
 import { AtDivider, AtTabs, AtTabsPane } from "taro-ui";
+import { View, Text } from "@tarojs/components";
 import Card from "../../components/Card/index";
+import Navigation from "../../components/Navigation/index";
 import "./index.scss";
 
 const data = {
@@ -42,6 +43,7 @@ const Detail: React.FC<{}> = () => {
         }}
       />
       <View className='detail-content'>
+        <Navigation />
         <View className='detail-content-main'>
           <Card rcType='detail' {...data} />
           <AtDivider />
@@ -52,10 +54,17 @@ const Detail: React.FC<{}> = () => {
             animated={false}
           >
             <AtTabsPane current={current} index={0}>
-              <View>标签页一的内容</View>
-            </AtTabsPane>
-            <AtTabsPane current={current} index={1}>
-              <View>标签页二的内容</View>
+              {Array.from({ length: 20 }).map((item) => (
+                <View
+                  key={item}
+                  style={{
+                    width: "100px",
+                    height: "200px",
+                    background: "red",
+                    marginBottom: "20px",
+                  }}
+                />
+              ))}
             </AtTabsPane>
           </AtTabs>
         </View>

@@ -4,7 +4,7 @@ import { View, Text } from "@tarojs/components";
 import Taro from "@tarojs/taro";
 import { AtSearchBar, AtDivider } from "taro-ui";
 import Card from "../../components/Card/index";
-import Navigation from "../../components/Navigation";
+import Navigation from "../../components/Navigation/index";
 import "./index.scss";
 
 const filterOptions = {
@@ -252,8 +252,8 @@ const List: React.FC<{}> = () => {
 
   return (
     <>
-      <Navigation />
       <View className='list-warp'>
+        <Navigation />
         <AtSearchBar
           placeholder='剧本名'
           value={searchValue}

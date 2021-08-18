@@ -1,0 +1,23 @@
+.navigation {
+  position: relative;
+  width: 100vw;
+  &-content {
+    position: absolute;
+    width: 100vw;
+    color: #ffffff;
+    text-align: center;
+
+    &-options {
+      position: absolute;
+      left: 40px;
+
+      &-return {
+        font-size: 36px;
+      }
+    }
+
+    &-title {
+      font-size: 28px;
+    }
+  }
+}
