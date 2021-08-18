@@ -1,9 +1,16 @@
 .card {
   display: flex;
 
-  &-img {
+  &-list-img {
     width: 146px;
     height: 220px;
+  }
+  &-detail-img {
+    width: 200px;
+    height: 300px;
+  }
+
+  &-img {
     margin-right: 20px;
     position: relative;
 
@@ -108,7 +115,7 @@
     &-tags,
     &-describe {
       color: #797a96;
-      font-size: 28px;
+      font-size: 24px;
       margin-bottom: 10px;
     }
 
@@ -124,9 +131,9 @@
       -webkit-line-clamp: 2;
     }
 
-    &-question-icon{
+    &-question-icon {
       margin-left: 10px;
-      font-size: 36px;
+      font-size: 32px;
       vertical-align: middle;
     }
 

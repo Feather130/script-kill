@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import classNames from "classnames";
 import { View, Text, Image } from "@tarojs/components";
+import { AtModal } from "taro-ui";
 import { ImageProps } from "@tarojs/components/types/Image";
 import "./index.scss";
 
@@ -45,14 +47,16 @@ const Card: React.FC<CardProps> = ({
   price,
   rcType,
 }) => {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <View className='card'>
-      <View className='card-img'>
+      <View className={classNames("card-img", `card-${rcType}-img`)}>
         {/*<View className="card-img-tag">{imageTag}</View>*/}
         {/*{recommend ? <View className="iconfont icon-tuijian card-img-recommend"></View> : null}*/}
         {/*{hasVideo ? <View className="card-img-video">video</View> : null}*/}
         <Image
-          style={{ width: "100%", height: "100%", borderRadius: "8px" }}
+          style={{ width: "100%", height: "100%", borderRadius: "4px" }}
           src={imageUrl}
         />
       </View>
@@ -90,7 +94,10 @@ const Card: React.FC<CardProps> = ({
               <View className='card-content-tags'>
                 <Text>价格：</Text>
                 <Text>￥ {price}每位</Text>
-                <Text className='iconfont icon-question card-content-question-icon' />
+                <Text
+                  className='iconfont icon-question card-content-question-icon'
+                  onClick={() => setShowModal(true)}
+                />
               </View>
             </>
           )}
@@ -103,6 +110,11 @@ const Card: React.FC<CardProps> = ({
               </Text>
             ))}
           </View>
+          {trait ? (
+            <View>
+              <Text className='card-content-trait'>{trait}</Text>
+            </View>
+          ) : null}
           {rcType === "list" ? (
             <View className='card-content-describe'>{describe}</View>
           ) : null}
@@ -121,6 +133,15 @@ const Card: React.FC<CardProps> = ({
             <Text className='card-content-bottom-text'>{difficulty}</Text>
           </View>
         </View>
+        <AtModal
+          isOpened={showModal}
+          title='关于价格'
+          confirmText='知道啦'
+          onClose={() => setShowModal(false)}
+          onCancel={() => setShowModal(false)}
+          onConfirm={() => setShowModal(false)}
+          content='超过午夜12：00之后加收10元夜场费'
+        />
       </View>
     </View>
   );
