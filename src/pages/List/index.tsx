@@ -1,9 +1,10 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import classNames from "classnames";
 import { View, Text } from "@tarojs/components";
-import Taro from '@tarojs/taro'
+import Taro from "@tarojs/taro";
 import { AtSearchBar, AtDivider } from "taro-ui";
 import Card from "../../components/Card/index";
+import Navigation from "../../components/Navigation";
 import "./index.scss";
 
 const filterOptions = {
@@ -196,14 +197,14 @@ const List: React.FC<{}> = () => {
     // TODO 搜索 并清空filter
   };
 
-  const jumpDetail=(id)=>{
-      Taro.navigateTo({
-        url:`/pages/Detail/index?id=${id}`
-      })
-  }
+  const jumpDetail = (id) => {
+    Taro.navigateTo({
+      url: `/pages/Detail/index?id=${id}`,
+    });
+  };
 
   const filterItem = (key, list: Array<object>): ReactNode => {
-    return list.map(({label, value}) => (
+    return list.map(({ label, value }) => (
       <Text
         key={value}
         data-value={value}
@@ -250,22 +251,29 @@ const List: React.FC<{}> = () => {
   }, []);
 
   return (
-    <View className='list-warp'>
-      <AtSearchBar
-        placeholder='剧本名'
-        value={searchValue}
-        onChange={handleChange}
-        onActionClick={handleSearch}
-        onConfirm={handleSearch}
-      />
-      <View>{filter(filterOptions)}</View>
-      <AtDivider />
-      {data.map((item) => (
-        <View className='list-warp-card' key={item.id} onClick={()=>jumpDetail(item.id)}>
-          <Card rcType='list' {...item} />
-        </View>
-      ))}
-    </View>
+    <>
+      <Navigation />
+      <View className='list-warp'>
+        <AtSearchBar
+          placeholder='剧本名'
+          value={searchValue}
+          onChange={handleChange}
+          onActionClick={handleSearch}
+          onConfirm={handleSearch}
+        />
+        <View>{filter(filterOptions)}</View>
+        <AtDivider />
+        {data.map((item) => (
+          <View
+            className='list-warp-card'
+            key={item.id}
+            onClick={() => jumpDetail(item.id)}
+          >
+            <Card rcType='list' {...item} />
+          </View>
+        ))}
+      </View>
+    </>
   );
 };
 

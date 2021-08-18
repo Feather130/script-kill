@@ -1,5 +1,6 @@
 import React, { ReactNode, useState, useEffect } from "react";
 import { View, Text } from "@tarojs/components";
+import { AtDivider, AtTabs, AtTabsPane } from "taro-ui";
 import Card from "../../components/Card/index";
 import "./index.scss";
 
@@ -25,6 +26,13 @@ const data = {
 };
 
 const Detail: React.FC<{}> = () => {
+  const [current, setCurrent] = useState(0);
+  const tabList = [{ title: "剧本简介" }];
+
+  const handleChange = (e) => {
+    setCurrent(e);
+  };
+
   return (
     <View className='detail'>
       <View
@@ -34,7 +42,23 @@ const Detail: React.FC<{}> = () => {
         }}
       />
       <View className='detail-content'>
-        <Card rcType='detail' {...data} />
+        <View className='detail-content-main'>
+          <Card rcType='detail' {...data} />
+          <AtDivider />
+          <AtTabs
+            current={current}
+            tabList={tabList}
+            onClick={handleChange}
+            animated={false}
+          >
+            <AtTabsPane current={current} index={0}>
+              <View>标签页一的内容</View>
+            </AtTabsPane>
+            <AtTabsPane current={current} index={1}>
+              <View>标签页二的内容</View>
+            </AtTabsPane>
+          </AtTabs>
+        </View>
       </View>
     </View>
   );

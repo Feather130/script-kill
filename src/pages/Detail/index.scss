@@ -1,5 +1,37 @@
 .detail {
   position: relative;
+
+  &-main {
+  }
+
+  .at-divider {
+    height: 60px;
+  }
+
+  .at-tabs__header {
+    background-color: transparent;
+    align-items: baseline;
+    margin-bottom: 20px;
+  }
+
+  .at-tabs__item {
+    color: rgba(255, 255, 255, 0.7);
+    flex: none;
+    padding: 0;
+    margin-right: 20px;
+    font-size: 42px;
+    transition: all 0.15s;
+  }
+
+  .at-tabs__item--active {
+    color: rgba(255, 255, 255, 1);
+  }
+
+  .at-tabs__item-underline,
+  .at-tabs__underline {
+    display: none;
+  }
+
   &-bg {
     height: 100vh;
     width: 100vh;
@@ -24,7 +56,15 @@
 
   &-content {
     position: absolute;
-    padding-left: 40px;
-    padding-right: 40px;
+    width: 90%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &-main{
+      margin-top: 40px;
+    }
   }
 }

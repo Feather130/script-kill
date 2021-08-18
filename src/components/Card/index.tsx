@@ -94,10 +94,10 @@ const Card: React.FC<CardProps> = ({
               <View className='card-content-tags'>
                 <Text>价格：</Text>
                 <Text>￥ {price}每位</Text>
-                <Text
-                  className='iconfont icon-question card-content-question-icon'
-                  onClick={() => setShowModal(true)}
-                />
+                {/*<Text*/}
+                {/*  className='iconfont icon-question card-content-question-icon'*/}
+                {/*  onClick={() => setShowModal(true)}*/}
+                {/*/>*/}
               </View>
             </>
           )}
