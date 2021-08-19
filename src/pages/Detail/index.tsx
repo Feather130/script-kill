@@ -1,6 +1,7 @@
 import React, { ReactNode, useState, useEffect } from "react";
-import { AtDivider, AtTabs, AtTabsPane } from "taro-ui";
+import { AtDivider } from "taro-ui";
 import { View, Text } from "@tarojs/components";
+import classNames from "classnames";
 import Card from "../../components/Card/index";
 import Navigation from "../../components/Navigation/index";
 import "./index.scss";
@@ -27,8 +28,8 @@ const data = {
 };
 
 const Detail: React.FC<{}> = () => {
-  const [current, setCurrent] = useState(0);
-  const tabList = [{ title: "剧本简介" }];
+  const [current, setCurrent] = useState(1);
+  const tabList = [{ id: 1, title: "剧本简介" }];
 
   const handleChange = (e) => {
     setCurrent(e);
@@ -47,26 +48,27 @@ const Detail: React.FC<{}> = () => {
         <View className='detail-content-main'>
           <Card rcType='detail' {...data} />
           <AtDivider />
-          <AtTabs
-            current={current}
-            tabList={tabList}
-            onClick={handleChange}
-            animated={false}
-          >
-            <AtTabsPane current={current} index={0}>
-              {Array.from({ length: 20 }).map((item) => (
+          <View>
+            <View className='detail-tabs'>
+              {tabList.map((item) => (
                 <View
-                  key={item}
-                  style={{
-                    width: "100px",
-                    height: "200px",
-                    background: "red",
-                    marginBottom: "20px",
-                  }}
-                />
+                  className={classNames(
+                    "detail-tabs-item",
+                    current === item.id ? "detail-tabs-item-active" : ""
+                  )}
+                  key={item.id}
+                  onClick={() => handleChange(item.id)}
+                >
+                  {item.title}
+                </View>
               ))}
-            </AtTabsPane>
-          </AtTabs>
+            </View>
+            <View>
+              <View style={{ display: current === 1 ? "block" : "none" }}>
+                1111
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>
