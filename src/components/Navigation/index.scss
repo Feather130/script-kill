@@ -1,6 +1,8 @@
 .navigation {
-  position: relative;
+  position: sticky;
   width: 100vw;
+  top: 0;
+  z-index: 999;
   &-content {
     position: absolute;
     width: 100vw;

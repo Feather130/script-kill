@@ -1,8 +1,6 @@
 .list-warp {
+  min-height: 100vh;
   background: #141a30;
-  height: 100vh;
-  padding-left: 30px;
-  padding-right: 30px;
 
   .at-divider {
     height: 60px;
@@ -16,6 +14,20 @@
 
     &:after {
       content: none;
+    }
+  }
+
+  &-content {
+    min-height: 100vh;
+    padding: 30px 40px;
+
+    &-card {
+      margin-top: 20px;
+      margin-bottom: 30px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 
@@ -39,10 +51,5 @@
     &-item-active {
       color: #fac618;
     }
-  }
-
-  &-card {
-    margin-top: 20px;
-    margin-bottom: 30px;
   }
 }

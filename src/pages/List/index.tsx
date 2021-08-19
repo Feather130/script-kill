@@ -251,9 +251,9 @@ const List: React.FC<{}> = () => {
   }, []);
 
   return (
-    <>
-      <View className='list-warp'>
-        <Navigation />
+    <View className='list-warp'>
+      <Navigation background='#141a30' />
+      <View className='list-warp-content'>
         <AtSearchBar
           placeholder='剧本名'
           value={searchValue}
@@ -263,17 +263,17 @@ const List: React.FC<{}> = () => {
         />
         <View>{filter(filterOptions)}</View>
         <AtDivider />
-        {data.map((item) => (
+        {[...data, ...data, ...data, ...data].map((item, index) => (
           <View
-            className='list-warp-card'
-            key={item.id}
+            className='list-warp-content-card'
+            key={index}
             onClick={() => jumpDetail(item.id)}
           >
             <Card rcType='list' {...item} />
           </View>
         ))}
       </View>
-    </>
+    </View>
   );
 };
 

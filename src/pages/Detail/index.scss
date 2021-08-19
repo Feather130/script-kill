@@ -1,7 +1,9 @@
 .detail {
-  position: relative;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   .at-divider {
     height: 60px;
@@ -31,33 +33,10 @@
     display: none;
   }
 
-  &-bg {
-    height: 100vh;
-    width: 100vw;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000000;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    &::before {
-      content: "";
-      background-color: rgba(0, 0, 0, 0.65);
-      height: 100vh;
-      width: 100vw;
-      position: absolute;
-      top: 0;
-      left: 0;
-      backdrop-filter: blur(50px);
-    }
-  }
-
   &-content {
-    position: absolute;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(50px);
 
     &-main {
       margin-left: 40px;

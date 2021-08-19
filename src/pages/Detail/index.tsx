@@ -35,13 +35,12 @@ const Detail: React.FC<{}> = () => {
   };
 
   return (
-    <View className='detail'>
-      <View
-        className='detail-bg'
-        style={{
-          backgroundImage: `url(${data.imageUrl})`,
-        }}
-      />
+    <View
+      className='detail'
+      style={{
+        backgroundImage: `url(${data.imageUrl})`,
+      }}
+    >
       <View className='detail-content'>
         <Navigation />
         <View className='detail-content-main'>
@@ -54,17 +53,7 @@ const Detail: React.FC<{}> = () => {
             animated={false}
           >
             <AtTabsPane current={current} index={0}>
-              {Array.from({ length: 20 }).map((item) => (
-                <View
-                  key={item}
-                  style={{
-                    width: "100px",
-                    height: "200px",
-                    background: "red",
-                    marginBottom: "20px",
-                  }}
-                />
-              ))}
+              1
             </AtTabsPane>
           </AtTabs>
         </View>

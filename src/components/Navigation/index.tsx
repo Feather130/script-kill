@@ -5,9 +5,10 @@ import "./index.scss";
 
 interface NavigationProps {
   title?: string;
+  background?: string;
 }
 
-const Navigation: React.FC<NavigationProps> = ({ title }) => {
+const Navigation: React.FC<NavigationProps> = ({ title, background }) => {
   const [showReturn, setShowReturn] = useState(false);
   const { navBarHeight, menuHeight, menuBotton } = window.globalData;
 
@@ -23,7 +24,10 @@ const Navigation: React.FC<NavigationProps> = ({ title }) => {
   }, []);
 
   return (
-    <View className='navigation' style={{ height: navBarHeight }}>
+    <View
+      className='navigation'
+      style={{ height: navBarHeight, background: background || "transparent" }}
+    >
       <View
         className='navigation-content'
         style={{
