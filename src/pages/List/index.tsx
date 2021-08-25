@@ -6,6 +6,7 @@ import { AtSearchBar, AtDivider } from "taro-ui";
 import Card from "../../components/Card/index";
 import Navigation from "../../components/Navigation/index";
 import "./index.scss";
+import api from "../../api/script";
 
 const filterOptions = {
   people: {
@@ -139,46 +140,20 @@ const filterOptions = {
   },
 };
 
-const data = [
-  {
-    id: 1,
-    imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
-    imageTag: "城限",
-    title: "天地学园",
-    isHot: true,
-    isNew: true,
-    grade: "9.46",
-    trait: "硬核必玩！",
-    tags: ["推理", "硬核", "还原"],
-    describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
-    people: "4男2女",
-    time: "6小时",
-    difficulty: "适中",
-    recommend: true,
-    hasVideo: false,
-  },
-  {
-    id: 2,
-    imageUrl: "https://pic.qqtn.com/up/2019-9/15690311636958128.jpg",
-    imageTag: "盒装",
-    title: "天地学园",
-    isHot: true,
-    isNew: true,
-    grade: "9.46",
-    trait: "硬核必玩！",
-    tags: ["推理", "硬核", "还原"],
-    describe: "今天6名911事件的亲历者，将带领我们重温这段尘封已久的往事",
-    people: "4男2女",
-    time: "6小时",
-    difficulty: "适中",
-    recommend: false,
-    hasVideo: true,
-  },
-];
-
 const List: React.FC<{}> = () => {
   const [active, setActive] = useState({});
   const [searchValue, setSearchValue] = useState("");
+  const [data, setData] = useState([]);
+
+  const getList = (isReset = false) => {
+    api.getList({}).then((res) => {
+      if (isReset) {
+        setData(res.data.data.data);
+      } else {
+        setData([...data, ...res.data.data.data]);
+      }
+    });
+  };
 
   const handleFilter = (e, key) => {
     if (e.target.dataset.value) {
@@ -248,6 +223,10 @@ const List: React.FC<{}> = () => {
       {}
     );
     setActive(obj);
+  }, []);
+
+  useEffect(() => {
+    getList();
   }, []);
 
   return (

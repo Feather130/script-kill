@@ -1,6 +1,6 @@
-import React, { ReactNode, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { AtDivider } from "taro-ui";
-import { View, Text } from "@tarojs/components";
+import { View } from "@tarojs/components";
 import classNames from "classnames";
 import Card from "../../components/Card/index";
 import Navigation from "../../components/Navigation/index";
@@ -25,6 +25,7 @@ const data = {
   author: "张三",
   issue: "千家顺",
   price: 178,
+  content: "",
 };
 
 const Detail: React.FC<{}> = () => {
@@ -64,7 +65,7 @@ const Detail: React.FC<{}> = () => {
             </View>
             <View>
               <View style={{ display: current === 1 ? "block" : "none" }}>
-                1111
+                <View dangerouslySetInnerHTML={{ __html: data.content }} />
               </View>
             </View>
           </View>
